@@ -1,5 +1,6 @@
 import { IResolvers } from "@graphql-tools/utils";
 import {Database, Listing} from "../../../lib/Types";
+import {ObjectId} from "mongodb";
 export const resolvers: IResolvers = {
     Query: {
             listings: async (
@@ -15,7 +16,7 @@ export const resolvers: IResolvers = {
                 {db}: { db: Database }
             ): Promise<Listing> => {
                 const deleteRes = await db.listings.findOneAndDelete({
-                    _id: new Object(id)
+                    _id: new ObjectId(id)
                 });
                 if (!deleteRes.value) {
                     throw new Error("failed to delete listing");
