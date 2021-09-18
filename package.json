@@ -6,15 +6,19 @@
   "scripts": {
     "start": "nodemon src/index.ts && nodemon dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf ./build && tsc"
+    "build": "node_modules/.bin/rimraf server/build && tsc",
+    "seed": "node_modules/.bin/ts-node temp/seed.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/body-parser": "^1.19.1",
+    "@types/dotenv": "^8.2.0",
     "@types/graphql": "^14.5.0",
+    "@types/mongodb": "^4.0.7",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
+    "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "typescript": "^4.4.3"
   },
@@ -26,6 +30,7 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "graphql": "^15.5.3",
+    "mongodb": "^4.1.1",
     "ts-node": "^10.2.1"
   }
 }

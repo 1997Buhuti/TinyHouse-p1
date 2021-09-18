@@ -9,6 +9,6 @@
     "strict": true
   },
   "exclude": [
-    "node_modules"
+    "server/node_modules"
   ]
 }
