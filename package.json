@@ -7,6 +7,7 @@
     "start": "nodemon src/index.ts && nodemon dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node_modules/.bin/rimraf server/build && tsc",
+    "runbuild": "nodemon dist/index.js",
     "seed": "node_modules/.bin/ts-node temp/seed.ts"
   },
   "author": "",
