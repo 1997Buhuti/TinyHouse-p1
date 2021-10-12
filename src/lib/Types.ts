@@ -28,7 +28,7 @@ export interface listingInput{
 }
 
 export interface listingUpdateInput{
-    _id:ObjectId;
+    _id:string;
     title:string;
     image:string;
     address:string;

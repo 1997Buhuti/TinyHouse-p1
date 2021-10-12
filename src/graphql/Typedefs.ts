@@ -47,6 +47,7 @@ export const typeDefs = gql`
   type Mutation {
     deleteListing(id: ID!): Listing!
     addListing(input: listingInput!):rtnType!
-    updateListing(id: ID!, input: listingUpdateInput!): Listing!
+    updateListing(_id: ID!, input: listingUpdateInput!): Listing!
   }
-`;
+`
+;
