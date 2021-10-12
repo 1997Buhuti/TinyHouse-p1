@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node_modules/.bin/rimraf server/build && tsc",
     "runbuild": "nodemon build/index.js",
-    "seed": "node_modules/.bin/ts-node temp/seed.ts"
+    "seed": "nodemon src/temp/seed.ts"
   },
   "author": "",
   "license": "ISC",
