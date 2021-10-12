@@ -47,7 +47,10 @@ export const resolvers: IResolvers = {
             ): Promise<any> => {
                 console.log(UpdateInput._id);
                 const insertRes2 = await db.listings.findOneAndUpdate(
-                    {_id:UpdateInput._id},{UpdateInput}
+                    {
+                        _id: new ObjectId(UpdateInput._id)
+                    },
+                    {UpdateInput}
                 )
                 const updatedListing =insertRes2
                 if (!insertRes2) {
@@ -55,7 +58,7 @@ export const resolvers: IResolvers = {
                 }
                 return insertRes2;
             }
-            
+
         },
 
             Listing: {
