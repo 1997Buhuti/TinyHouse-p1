@@ -43,20 +43,33 @@ export const resolvers: IResolvers = {
             updateListing: async (
                 _root: undefined,
                 {UpdateInput}: listingUpdateArgs,
-                {db , req}: { db: Database , req:Request},
+                {db}: { db: Database , req:Request},
             ): Promise<any> => {
-                console.log(UpdateInput._id);
-                const insertRes2 = await db.listings.findOneAndUpdate(
-                    {
-                        _id: new ObjectId(UpdateInput._id)
-                    },
-                    {UpdateInput}
-                )
-                const updatedListing =insertRes2
-                if (!insertRes2) {
-                    throw new Error("failed to update product");
+                try {
+                    const{id}=UpdateInput;
+                    const collectionToUpdate=await db.listings.findOne({
+                        _id: new ObjectId(id),
+                    });
+                    while (collectionToUpdate) {
+                        const id = collectionToUpdate._id;
+                        const insertRes2 = await db.listings.updateOne(
+                            {
+                                _id: new ObjectId(id)
+                            },
+                            {UpdateInput}
+                        )
+                        const updatedListing = insertRes2
+                        if (!insertRes2) {
+                            throw new Error("failed to update product");
+                        }
+                        return insertRes2;
+                    }
                 }
-                return insertRes2;
+                catch (error) {
+                    throw new Error(`Failed to update Listing: ${error}`);
+                }
+
+                return Error("There is an error id is null");
             }
 
         },
